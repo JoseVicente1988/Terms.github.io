@@ -1,8 +1,8 @@
 const glow = document.querySelector(".cursor-glow");
-const revealItems = document.querySelectorAll(".reveal, .reveal-delay");
+const revealElements = document.querySelectorAll(".reveal");
 
 window.addEventListener("mousemove", function (event) {
-	if (!glow) {
+	if (glow === null) {
 		return;
 	}
 
@@ -14,15 +14,15 @@ const observer = new IntersectionObserver(
 	function (entries) {
 		entries.forEach(function (entry) {
 			if (entry.isIntersecting) {
-				entry.target.classList.add("is-visible");
+				entry.target.classList.add("visible");
 			}
 		});
 	},
 	{
-		threshold: 0.15
+		threshold: 0.18
 	}
 );
 
-revealItems.forEach(function (item) {
-	observer.observe(item);
+revealElements.forEach(function (element) {
+	observer.observe(element);
 });
