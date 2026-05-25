@@ -22,9 +22,8 @@ function triggerChapterTransition(nextSection) {
 
 	chapterTransitionTimer = setTimeout(function () {
 		document.body.classList.remove("chapter-changing");
-	}, 660);
+	}, 460);
 }
-
 
 
 const translations = {

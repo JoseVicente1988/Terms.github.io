@@ -870,117 +870,108 @@ h2 {
 
 
 
-/* Cinematic chapter transition.
-   Replaces the previous page-turn effect with a cleaner editorial/cinematic wipe. */
-.chapter-transition {
-	position: fixed;
-	inset: 0;
-	z-index: 60;
-	pointer-events: none;
-	opacity: 0;
-	background:
-		linear-gradient(90deg, rgba(7,8,20,0.00) 0%, rgba(7,8,20,0.72) 42%, rgba(7,8,20,0.92) 100%);
-	transform: translateX(100%);
-}
-
-.transition-line {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 18%;
-	width: 1px;
-	background: linear-gradient(180deg, transparent, rgba(246,242,234,0.45), transparent);
-	box-shadow:
-		0 0 28px rgba(156,124,255,0.55),
-		0 0 70px rgba(231,184,111,0.22);
-}
-
-body.chapter-changing .chapter-transition {
-	animation: cinematicWipe 620ms cubic-bezier(.2,.8,.2,1) both;
-}
-
-body.chapter-changing .background-image {
-	animation: backgroundPulse 620ms cubic-bezier(.2,.8,.2,1) both;
-}
-
-body.chapter-changing .chapter-content {
-	animation: chapterContentSettle 520ms cubic-bezier(.2,.8,.2,1) both;
-}
-
-@keyframes cinematicWipe {
-	0% {
-		opacity: 0;
-		transform: translateX(100%);
-	}
-	28% {
-		opacity: 1;
-		transform: translateX(18%);
-	}
-	62% {
-		opacity: 1;
-		transform: translateX(-8%);
-	}
-	100% {
-		opacity: 0;
-		transform: translateX(-100%);
-	}
-}
-
-@keyframes backgroundPulse {
-	0% {
-		filter: saturate(0.95) contrast(1.06) brightness(1);
-	}
-	45% {
-		filter: saturate(1.08) contrast(1.12) brightness(1.08);
-	}
-	100% {
-		filter: saturate(0.95) contrast(1.06) brightness(1);
-	}
-}
-
-@keyframes chapterContentSettle {
-	0% {
-		opacity: 0.72;
-		transform: translateY(18px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
 
 /* A small progressive accent on the active side dot */
 .rail-dot.active {
 	box-shadow: 0 0 0 8px rgba(156,124,255,0.10), 0 0 28px rgba(156,124,255,0.45);
 }
 
-@media (max-width: 820px) {
-	.chapter-transition {
-		background:
-			linear-gradient(90deg, rgba(7,8,20,0.00), rgba(7,8,20,0.78) 48%, rgba(7,8,20,0.94));
-	}
 
-	body.chapter-changing .chapter-transition {
-		animation-duration: 480ms;
-	}
 
-	body.chapter-changing .background-image {
-		animation-duration: 480ms;
-	}
 
-	body.chapter-changing .chapter-content {
-		animation-duration: 420ms;
+
+
+/* Simple fade transition between chapters */
+.fade-transition {
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+	pointer-events: none;
+	background: #070814;
+	opacity: 0;
+}
+
+body.chapter-changing .fade-transition {
+	animation: simpleChapterFade 420ms ease both;
+}
+
+body.chapter-changing .chapter-content {
+	animation: simpleContentSlideFadeIn 520ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes simpleChapterFade {
+	0% {
+		opacity: 0;
+	}
+	42% {
+		opacity: 0.58;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes simpleContentSlideFadeIn {
+	0% {
+		opacity: 0;
+		transform: translateX(-22px);
+	}
+	42% {
+		opacity: 0;
+		transform: translateX(-18px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+
+
+/* Fine-grained text entrance: title/body/buttons enter with a tiny delay */
+body.chapter-changing .chapter-content > * {
+	animation: chapterElementSlide 560ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+body.chapter-changing .chapter-content > *:nth-child(1) {
+	animation-delay: 80ms;
+}
+
+body.chapter-changing .chapter-content > *:nth-child(2) {
+	animation-delay: 120ms;
+}
+
+body.chapter-changing .chapter-content > *:nth-child(3) {
+	animation-delay: 165ms;
+}
+
+body.chapter-changing .chapter-content > *:nth-child(4) {
+	animation-delay: 210ms;
+}
+
+@keyframes chapterElementSlide {
+	0% {
+		opacity: 0;
+		transform: translateX(-16px);
+	}
+	46% {
+		opacity: 0;
+		transform: translateX(-12px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	body.chapter-changing .chapter-transition,
-	body.chapter-changing .background-image,
-	body.chapter-changing .chapter-content {
+	body.chapter-changing .fade-transition,
+	body.chapter-changing .chapter-content,
+	body.chapter-changing .chapter-content > * {
 		animation: none;
 	}
 
-	.chapter-transition {
+	.fade-transition {
 		display: none;
 	}
 }
