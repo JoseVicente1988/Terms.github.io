@@ -4,143 +4,117 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="ASerraPlay - Indie mobile games published on Google Play." />
-	<meta name="theme-color" content="#060713" />
+	<meta name="theme-color" content="#050713" />
 	<title>ASerraPlay | Indie Mobile Games</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css" />
 </head>
-<body>
-	<div class="site-background" aria-hidden="true"></div>
-	<div class="background-overlay" aria-hidden="true"></div>
-	<div class="cursor-light" aria-hidden="true"></div>
 
-	<header class="topbar">
+<body>
+	<div class="background"></div>
+	<div class="background-dim"></div>
+
+	<header class="header">
 		<div class="container nav">
-			<a class="brand" href="#home" aria-label="ASerraPlay home">
-				<div class="brand-mark">A</div>
-				<div>
+			<a class="brand" href="#home">
+				<span class="brand-mark">A</span>
+				<span>
 					<strong>ASerraPlay</strong>
-					<span>Indie Mobile Games</span>
-				</div>
+					<small>Indie Mobile Games</small>
+				</span>
 			</a>
 
-			<nav class="nav-links" aria-label="Main navigation">
+			<nav>
 				<a href="#games">Games</a>
-				<a href="#studio">Studio</a>
+				<a href="#about">About</a>
 				<a href="#contact">Contact</a>
 				<a href="privacy.html">Privacy</a>
 			</nav>
 
-			<a class="store-button" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer">
+			<a class="header-link" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer">
 				Google Play
 			</a>
 		</div>
 	</header>
 
 	<main id="home">
-		<section class="hero panel-section">
-			<div class="container hero-grid">
-				<div class="hero-content reveal">
-					<p class="eyebrow">Published Android games · ASerraPlay</p>
-
-					<h1>
-						Indie mobile games with
-						<span>simple ideas</span>
-						and clear gameplay.
-					</h1>
-
-					<p class="hero-description">
-						ASerraPlay is a small indie game brand focused on accessible mobile games:
-						puzzle challenges, trivia experiences and arcade projects designed for quick sessions.
+		<section class="hero snap-section">
+			<div class="container hero-layout">
+				<div class="hero-copy reveal">
+					<p class="label">ASerraPlay · Published on Google Play</p>
+					<h1>Indie games with simple ideas and clear gameplay.</h1>
+					<p class="lead">
+						Mobile games built around direct interaction, readable mechanics and short-session fun.
 					</p>
 
-					<div class="hero-actions">
+					<div class="actions">
 						<a class="button primary" href="#games">View games</a>
 						<a class="button secondary" href="mailto:josevicentevicedosilla@gmail.com">Contact</a>
 					</div>
 				</div>
 
-				<div class="hero-showcase reveal delay">
-					<div class="showcase-card main-game-card">
+				<div class="hero-games reveal delay">
+					<a class="hero-game hero-game-main" href="https://play.google.com/store/apps/details?id=com.ASerraPlay.lasermirror" target="_blank" rel="noopener noreferrer">
 						<img src="https://play-lh.googleusercontent.com/yQySyCnis-KyZTVJMyufh77u9h9bN7KaXSWyweacwN7jy5VwGs_YK_ooF5tl-D0qNmTYKsL-tqhNGzgUgcr3vUo=s256" alt="Laser Mirror Puzzle icon">
-						<div>
-							<span>Featured beta</span>
-							<h2>Laser Mirror Puzzle</h2>
-							<p>Rotate mirrors, redirect lasers and solve the path.</p>
-						</div>
-					</div>
+						<span>Featured Beta</span>
+						<strong>Laser Mirror Puzzle</strong>
+						<small>Rotate mirrors. Redirect lasers. Solve the path.</small>
+					</a>
 
-					<div class="side-game-card card-left">
-						<img src="https://play-lh.googleusercontent.com/8DmC3WQOvi0omWAX_V3aAlQJLsZTV8gu2kR1A9wtyAd9uMGAxjlXt8NqHxiJWxFTuOM=s256" alt="Bible Quizz icon">
-						<div>
+					<div class="hero-game-row">
+						<a class="hero-game small" href="https://play.google.com/store/apps/details?id=com.ASerraPlay.BibleQuizz" target="_blank" rel="noopener noreferrer">
+							<img src="https://play-lh.googleusercontent.com/8DmC3WQOvi0omWAX_V3aAlQJLsZTV8gu2kR1A9wtyAd9uMGAxjlXt8NqHxiJWxFTuOM=s256" alt="Bible Quizz icon">
 							<strong>Bible Quizz</strong>
-							<span>Trivia</span>
-						</div>
-					</div>
+							<small>Trivia</small>
+						</a>
 
-					<div class="side-game-card card-right">
-						<img src="https://play-lh.googleusercontent.com/ning4Homll1jps-1wHqouR8YaxKLoKPQzPh86eDR9NspYvNKkcCckux7GwgStFdjnOg=s256" alt="RunRunRule icon">
-						<div>
+						<a class="hero-game small" href="https://play.google.com/store/apps/details?id=com.ASerraPlay.RunRunRule" target="_blank" rel="noopener noreferrer">
+							<img src="https://play-lh.googleusercontent.com/ning4Homll1jps-1wHqouR8YaxKLoKPQzPh86eDR9NspYvNKkcCckux7GwgStFdjnOg=s256" alt="RunRunRule icon">
 							<strong>RunRunRule</strong>
-							<span>Arcade</span>
-						</div>
+							<small>Arcade</small>
+						</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section id="games" class="panel-section">
+		<section id="games" class="snap-section">
 			<div class="container">
-				<div class="section-heading reveal">
-					<p>Games</p>
+				<div class="section-title reveal">
+					<p class="label">Games</p>
 					<h2>Published projects</h2>
-					<span>
-						The website is structured as a vertical portfolio: every section rises over a persistent background image.
-					</span>
 				</div>
 
-				<div class="games-grid">
-					<article class="game-panel reveal">
-						<div class="game-visual laser-theme">
-							<img src="https://play-lh.googleusercontent.com/yQySyCnis-KyZTVJMyufh77u9h9bN7KaXSWyweacwN7jy5VwGs_YK_ooF5tl-D0qNmTYKsL-tqhNGzgUgcr3vUo=s256" alt="Laser Mirror Puzzle icon">
-						</div>
-						<div class="game-info">
-							<span class="game-type">Puzzle · Logic · Beta</span>
+				<div class="games">
+					<article class="game reveal">
+						<img src="https://play-lh.googleusercontent.com/yQySyCnis-KyZTVJMyufh77u9h9bN7KaXSWyweacwN7jy5VwGs_YK_ooF5tl-D0qNmTYKsL-tqhNGzgUgcr3vUo=s256" alt="Laser Mirror Puzzle icon">
+						<div>
+							<span>Puzzle · Logic · Beta</span>
 							<h3>Laser Mirror Puzzle</h3>
-							<p>
-								Redirect laser beams using mirrors and find the correct route to complete each level.
-							</p>
+							<p>Redirect laser beams using mirrors and find the correct path to complete each level.</p>
 							<a href="https://play.google.com/store/apps/details?id=com.ASerraPlay.lasermirror" target="_blank" rel="noopener noreferrer">Open in Google Play</a>
 						</div>
 					</article>
 
-					<article class="game-panel reveal">
-						<div class="game-visual bible-theme">
-							<img src="https://play-lh.googleusercontent.com/8DmC3WQOvi0omWAX_V3aAlQJLsZTV8gu2kR1A9wtyAd9uMGAxjlXt8NqHxiJWxFTuOM=s256" alt="Bible Quizz icon">
-						</div>
-						<div class="game-info">
-							<span class="game-type">Trivia · Quiz</span>
+					<article class="game reveal">
+						<img src="https://play-lh.googleusercontent.com/8DmC3WQOvi0omWAX_V3aAlQJLsZTV8gu2kR1A9wtyAd9uMGAxjlXt8NqHxiJWxFTuOM=s256" alt="Bible Quizz icon">
+						<div>
+							<span>Trivia · Quiz</span>
 							<h3>Bible Quizz</h3>
-							<p>
-								A Bible-themed trivia game where players answer questions and test their knowledge.
-							</p>
+							<p>A Bible-themed quiz game where players answer questions and test their knowledge.</p>
 							<a href="https://play.google.com/store/apps/details?id=com.ASerraPlay.BibleQuizz" target="_blank" rel="noopener noreferrer">Open in Google Play</a>
 						</div>
 					</article>
 
-					<article class="game-panel reveal">
-						<div class="game-visual run-theme">
-							<img src="https://play-lh.googleusercontent.com/ning4Homll1jps-1wHqouR8YaxKLoKPQzPh86eDR9NspYvNKkcCckux7GwgStFdjnOg=s256" alt="RunRunRule icon">
-						</div>
-						<div class="game-info">
-							<span class="game-type">Arcade · Endless</span>
+					<article class="game reveal">
+						<img src="https://play-lh.googleusercontent.com/ning4Homll1jps-1wHqouR8YaxKLoKPQzPh86eDR9NspYvNKkcCckux7GwgStFdjnOg=s256" alt="RunRunRule icon">
+						<div>
+							<span>Arcade · Endless</span>
 							<h3>RunRunRule</h3>
-							<p>
-								A fast arcade game built for short mobile sessions and direct action.
-							</p>
+							<p>A fast arcade game designed for short mobile sessions and direct action.</p>
 							<a href="https://play.google.com/store/apps/details?id=com.ASerraPlay.RunRunRule" target="_blank" rel="noopener noreferrer">Open in Google Play</a>
 						</div>
 					</article>
@@ -148,62 +122,53 @@
 			</div>
 		</section>
 
-		<section id="studio" class="panel-section">
-			<div class="container studio-layout">
-				<div class="section-heading reveal">
-					<p>Studio</p>
-					<h2>A compact indie portfolio.</h2>
-					<span>
-						This page works as a developer website for Google Play, AdMob verification, privacy policy and game discovery.
-					</span>
+		<section id="about" class="snap-section">
+			<div class="container about-panel reveal">
+				<div>
+					<p class="label">About</p>
+					<h2>A small indie brand for mobile games.</h2>
 				</div>
 
-				<div class="studio-list">
-					<div class="studio-item reveal">
+				<div class="about-grid">
+					<div>
 						<strong>01</strong>
-						<h3>Mobile-first games</h3>
-						<p>Projects designed for Android, quick sessions and simple interaction.</p>
+						<h3>Mobile-first</h3>
+						<p>Games designed for Android, quick sessions and simple interaction.</p>
 					</div>
-					<div class="studio-item reveal">
+					<div>
 						<strong>02</strong>
-						<h3>Clear gameplay loops</h3>
-						<p>Readable mechanics, clear goals and direct game structure.</p>
+						<h3>Clear mechanics</h3>
+						<p>Readable goals, direct controls and straightforward gameplay loops.</p>
 					</div>
-					<div class="studio-item reveal">
+					<div>
 						<strong>03</strong>
-						<h3>Ready for Play Store</h3>
-						<p>Includes privacy policy and app-ads.txt at the site root for AdMob.</p>
+						<h3>Store-ready</h3>
+						<p>Developer page, privacy policy and app-ads.txt prepared for publishing needs.</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section id="contact" class="panel-section">
-			<div class="container">
-				<div class="contact-card reveal">
-					<div>
-						<p class="eyebrow">Contact</p>
-						<h2>Support, questions or collaboration?</h2>
-						<span>
-							For support or business inquiries related to ASerraPlay games, contact the developer.
-						</span>
-					</div>
-					<div class="contact-actions">
-						<a class="button primary" href="mailto:josevicentevicedosilla@gmail.com">Email developer</a>
-						<a class="button secondary" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer">Developer page</a>
-					</div>
+		<section id="contact" class="snap-section">
+			<div class="container contact-panel reveal">
+				<div>
+					<p class="label">Contact</p>
+					<h2>Support or collaboration?</h2>
+					<p>For questions about ASerraPlay games, support or business inquiries, contact the developer.</p>
+				</div>
+
+				<div class="actions">
+					<a class="button primary" href="mailto:josevicentevicedosilla@gmail.com">Email developer</a>
+					<a class="button secondary" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer">Google Play page</a>
 				</div>
 			</div>
 		</section>
 	</main>
 
 	<footer class="footer">
-		<div class="container footer-grid">
+		<div class="container footer-layout">
+			<p>© 2026 ASerraPlay</p>
 			<div>
-				<strong>ASerraPlay</strong>
-				<p>Indie mobile games with simple and enjoyable gameplay.</p>
-			</div>
-			<div class="footer-links">
 				<a href="privacy.html">Privacy Policy</a>
 				<a href="app-ads.txt">app-ads.txt</a>
 				<a href="mailto:josevicentevicedosilla@gmail.com">Contact</a>
