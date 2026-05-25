@@ -7,8 +7,8 @@ const translations = {
 		nav_privacy: "Privacy",
 
 		home_kicker: "Solo indie game developer",
-		home_title: "I create mobile games with clear ideas.",
-		home_text: "ASerraPlay is my personal brand as an indie developer, where I publish Android games focused on clear ideas, direct mechanics and easy-to-enjoy experiences.",
+		home_title: "Mobile games with clear ideas.",
+		home_text: "ASerraPlay is my indie developer brand for Android games with clear ideas, direct mechanics and easy-to-enjoy experiences.",
 		home_cta: "Explore my work",
 		chapter_home: "Home",
 
@@ -18,8 +18,8 @@ const translations = {
 		game_open: "Open on Google Play",
 
 		about_kicker: "Behind ASerraPlay",
-		about_title: "A solo indie developer building a personal game catalogue.",
-		about_text: "ASerraPlay is my personal brand as an indie developer. It brings together my Android games and represents a focused path of publishing, learning and improving with each release.",
+		about_title: "A personal catalogue of Android games.",
+		about_text: "ASerraPlay reúne mis juegos Android y representa mi camino como desarrollador indie: publicar, aprender y mejorar con cada lanzamiento.",
 		principle_1_title: "Finish",
 		principle_1_text: "Small completed releases over endless prototypes.",
 		principle_2_title: "Learn",
@@ -43,8 +43,8 @@ const translations = {
 		nav_privacy: "Privacidad",
 
 		home_kicker: "Desarrollador indie en solitario",
-		home_title: "Creo juegos móviles con ideas claras.",
-		home_text: "ASerraPlay es mi marca personal como desarrollador indie, donde publico juegos Android centrados en ideas claras, mecánicas directas y experiencias fáciles de disfrutar.",
+		home_title: "Juegos móviles con ideas claras.",
+		home_text: "ASerraPlay es mi marca indie para juegos Android con ideas claras, mecánicas directas y experiencias fáciles de disfrutar.",
 		home_cta: "Ver mi trabajo",
 		chapter_home: "Inicio",
 
@@ -54,8 +54,8 @@ const translations = {
 		game_open: "Abrir en Google Play",
 
 		about_kicker: "Detrás de ASerraPlay",
-		about_title: "Un desarrollador indie creando un catálogo propio de juegos.",
-		about_text: "ASerraPlay es mi marca personal como desarrollador indie. Reúne mis juegos Android y representa un camino enfocado en publicar, aprender y mejorar con cada lanzamiento.",
+		about_title: "Un catálogo propio de juegos Android.",
+		about_text: "ASerraPlay reúne mis juegos Android y representa mi camino como desarrollador indie: publicar, aprender y mejorar con cada lanzamiento.",
 		principle_1_title: "Terminar",
 		principle_1_text: "Lanzamientos pequeños y completos por encima de prototipos infinitos.",
 		principle_2_title: "Aprender",
