@@ -48,10 +48,10 @@ body::after {
 	z-index: -2;
 	background-image: url("assets/backgrounds/aserraplay-bg.png");
 	background-repeat: no-repeat;
-	background-size: min(1200px, 70vw) auto;
-	background-position: right 8vw top 120px;
-	opacity: 0.13;
-	filter: grayscale(0.2) saturate(0.8);
+	background-size: min(1500px, 92vw) auto;
+	background-position: right 2vw top 96px;
+	opacity: 0.42;
+	filter: saturate(0.95) contrast(1.04);
 	pointer-events: none;
 }
 
@@ -76,8 +76,8 @@ img {
 	z-index: -1;
 	pointer-events: none;
 	background:
-		linear-gradient(90deg, rgba(15,17,23,0.98) 0%, rgba(15,17,23,0.68) 54%, rgba(15,17,23,0.92) 100%),
-		radial-gradient(circle at center, transparent, rgba(15,17,23,0.72));
+		linear-gradient(90deg, rgba(15,17,23,0.96) 0%, rgba(15,17,23,0.38) 50%, rgba(15,17,23,0.76) 100%),
+		radial-gradient(circle at center, rgba(15,17,23,0.08), rgba(15,17,23,0.46));
 }
 
 .topbar {
@@ -514,9 +514,9 @@ h2 {
 	}
 
 	body::after {
-		background-size: 900px auto;
-		background-position: center top 150px;
-		opacity: 0.08;
+		background-size: 980px auto;
+		background-position: center top 110px;
+		opacity: 0.28;
 	}
 
 	.topbar-inner {
