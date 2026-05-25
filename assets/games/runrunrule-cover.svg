@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071b18"/><stop offset=".55" stop-color="#163a5a"/><stop offset="1" stop-color="#070b14"/></linearGradient><radialGradient id="g" cx="72%" cy="45%" r="48%"><stop offset="0" stop-color="#72ffbd" stop-opacity=".42"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/><rect width="1200" height="760" fill="url(#g)"/>
+  <path d="M0 620 C230 520 390 650 600 545 C820 435 970 480 1200 355 L1200 760 L0 760Z" fill="#0b1020" opacity=".85"/>
+  <path d="M110 560 C320 475 455 610 650 510 C850 405 1000 430 1130 355" fill="none" stroke="#69e2ff" stroke-width="12" stroke-linecap="round" opacity=".55"/>
+  <g transform="translate(530 335)"><circle cx="70" cy="70" r="42" fill="#ff4fa3"/><rect x="38" y="110" width="64" height="100" rx="30" fill="#fff"/><path d="M40 145 L-35 190M100 145 L170 102M50 210 L10 300M92 210 L160 292" stroke="#fff" stroke-width="20" stroke-linecap="round"/></g>
+  <g opacity=".34" fill="#fff"><path d="M240 330h230v12H240zM780 250h210v12H780zM110 450h170v10H110z"/></g>
+  <text x="70" y="120" font-family="Inter, Arial" font-size="72" font-weight="900" fill="#fff">RunRunRule</text>
+  <text x="74" y="176" font-family="Inter, Arial" font-size="30" font-weight="600" fill="#b5ffe0">Endless exciting arcade gameplay.</text>
+</svg>

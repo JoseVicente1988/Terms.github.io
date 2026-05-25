@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07132c"/><stop offset="0.55" stop-color="#102a55"/><stop offset="1" stop-color="#090c1c"/></linearGradient>
+    <radialGradient id="glow" cx="70%" cy="25%" r="45%"><stop offset="0" stop-color="#ffe86e" stop-opacity=".9"/><stop offset=".35" stop-color="#ff4fa3" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect width="1200" height="760" fill="url(#glow)"/>
+  <g opacity=".12" stroke="#fff"><path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200M0 640h1200M80 0v760M160 0v760M240 0v760M320 0v760M400 0v760M480 0v760M560 0v760M640 0v760M720 0v760M800 0v760M880 0v760M960 0v760M1040 0v760M1120 0v760"/></g>
+  <g filter="url(#blur)" stroke="#ff2b72" stroke-width="20" stroke-linecap="round" opacity=".95" fill="none"><path d="M150 600 L440 360 L700 500 L960 220"/></g>
+  <g stroke="#ff2b72" stroke-width="10" stroke-linecap="round" fill="none"><path d="M150 600 L440 360 L700 500 L960 220"/></g>
+  <g transform="translate(100 560)"><rect x="0" y="0" width="130" height="90" rx="24" fill="#dbeafe" opacity=".95"/><circle cx="80" cy="44" r="26" fill="#ff2b72"/><circle cx="80" cy="44" r="14" fill="#fff" opacity=".9"/></g>
+  <g transform="translate(380 318) rotate(-32)"><rect x="0" y="0" width="180" height="34" rx="17" fill="#dff9ff"/><rect x="10" y="8" width="160" height="18" rx="9" fill="#69e2ff" opacity=".85"/></g>
+  <g transform="translate(645 470) rotate(31)"><rect x="0" y="0" width="180" height="34" rx="17" fill="#dff9ff"/><rect x="10" y="8" width="160" height="18" rx="9" fill="#69e2ff" opacity=".85"/></g>
+  <g transform="translate(890 150)"><circle cx="85" cy="85" r="82" fill="#27375f"/><circle cx="85" cy="85" r="62" fill="#ff9d2e"/><circle cx="85" cy="85" r="40" fill="#ffe86e"/><circle cx="85" cy="85" r="18" fill="#fff"/></g>
+  <text x="70" y="115" font-family="Inter, Arial" font-size="64" font-weight="900" fill="#fff">Laser Mirror Puzzle</text>
+  <text x="74" y="170" font-family="Inter, Arial" font-size="28" font-weight="600" fill="#98a7c7">Rotate mirrors. Redirect lasers. Solve the path.</text>
+</svg>
