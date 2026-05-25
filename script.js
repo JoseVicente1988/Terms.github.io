@@ -1,3 +1,32 @@
+
+let lastSectionForTurn = document.body.dataset.section || "home";
+let pageTurnTimer = null;
+
+function triggerPageTurn(nextSection) {
+	if (nextSection === lastSectionForTurn) {
+		return;
+	}
+
+	lastSectionForTurn = nextSection;
+
+	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+		return;
+	}
+
+	document.body.classList.remove("page-turning");
+	void document.body.offsetWidth;
+	document.body.classList.add("page-turning");
+
+	if (pageTurnTimer !== null) {
+		clearTimeout(pageTurnTimer);
+	}
+
+	pageTurnTimer = setTimeout(function () {
+		document.body.classList.remove("page-turning");
+	}, 760);
+}
+
+
 const translations = {
 	en: {
 		rail_word: "CREATE · PLAY · INSPIRE",
@@ -173,6 +202,7 @@ const sectionObserver = new IntersectionObserver(
 		entries.forEach(function (entry) {
 			if (entry.isIntersecting) {
 				const section = entry.target.dataset.section || "home";
+				triggerPageTurn(section);
 				document.body.dataset.section = section;
 
 				railDots.forEach(function (dot) {
