@@ -1,3 +1,37 @@
+let lastSectionForTransition = document.body.dataset.section || "home";
+let sectionTransitionTimer = null;
+
+function triggerSectionTransition(nextSection) {
+	if (nextSection === lastSectionForTransition) {
+		return;
+	}
+
+	lastSectionForTransition = nextSection;
+
+	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+		return;
+	}
+
+	document.body.classList.remove("section-changing");
+	void document.body.offsetWidth;
+	document.body.classList.add("section-changing");
+
+	if (sectionTransitionTimer !== null) {
+		clearTimeout(sectionTransitionTimer);
+	}
+
+	sectionTransitionTimer = setTimeout(function () {
+		document.body.classList.remove("section-changing");
+	}, 820);
+}
+
+function setActiveChapter(sectionName) {
+	document.querySelectorAll(".chapter").forEach(function (chapter) {
+		chapter.classList.toggle("is-active", chapter.dataset.section === sectionName);
+	});
+}
+
+
 const translations = {
 	en: {
 		rail_word: "CREATE · PLAY · INSPIRE",
@@ -173,7 +207,9 @@ const sectionObserver = new IntersectionObserver(
 		entries.forEach(function (entry) {
 			if (entry.isIntersecting) {
 				const section = entry.target.dataset.section || "home";
+				triggerSectionTransition(section);
 				document.body.dataset.section = section;
+				setActiveChapter(section);
 
 				railDots.forEach(function (dot) {
 					dot.classList.toggle("active", dot.dataset.sectionLink === section);
@@ -216,3 +252,5 @@ window.addEventListener("mousemove", function (event) {
 
 setLanguage(currentLanguage);
 updateGame(currentGame);
+
+setActiveChapter(document.body.dataset.section || "home");
