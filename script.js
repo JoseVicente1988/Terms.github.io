@@ -1,34 +1,28 @@
-let lastSectionForTransition = document.body.dataset.section || "home";
-let sectionTransitionTimer = null;
 
-function triggerSectionTransition(nextSection) {
-	if (nextSection === lastSectionForTransition) {
+const sharedHighlight = document.querySelector(".shared-game-highlight");
+const gameSelector = document.querySelector(".game-selector");
+
+function updateSharedGameHighlight() {
+	if (!sharedHighlight || !gameSelector) {
 		return;
 	}
 
-	lastSectionForTransition = nextSection;
+	const activeCard = document.querySelector(".game-card.active");
 
-	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+	if (!activeCard) {
 		return;
 	}
 
-	document.body.classList.remove("section-changing");
-	void document.body.offsetWidth;
-	document.body.classList.add("section-changing");
+	const selectorRect = gameSelector.getBoundingClientRect();
+	const cardRect = activeCard.getBoundingClientRect();
 
-	if (sectionTransitionTimer !== null) {
-		clearTimeout(sectionTransitionTimer);
-	}
+	const x = cardRect.left - selectorRect.left;
+	const y = cardRect.top - selectorRect.top;
 
-	sectionTransitionTimer = setTimeout(function () {
-		document.body.classList.remove("section-changing");
-	}, 820);
-}
-
-function setActiveChapter(sectionName) {
-	document.querySelectorAll(".chapter").forEach(function (chapter) {
-		chapter.classList.toggle("is-active", chapter.dataset.section === sectionName);
-	});
+	sharedHighlight.style.width = cardRect.width + "px";
+	sharedHighlight.style.height = cardRect.height + "px";
+	sharedHighlight.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+	gameSelector.classList.add("has-shared-highlight");
 }
 
 
@@ -200,6 +194,8 @@ function updateGame(key) {
 	document.getElementById("gameTitle").textContent = game.title;
 	document.getElementById("gameDescription").textContent = game.description;
 	document.getElementById("gameLink").href = game.link;
+
+	requestAnimationFrame(updateSharedGameHighlight);
 }
 
 const sectionObserver = new IntersectionObserver(
@@ -207,9 +203,7 @@ const sectionObserver = new IntersectionObserver(
 		entries.forEach(function (entry) {
 			if (entry.isIntersecting) {
 				const section = entry.target.dataset.section || "home";
-				triggerSectionTransition(section);
 				document.body.dataset.section = section;
-				setActiveChapter(section);
 
 				railDots.forEach(function (dot) {
 					dot.classList.toggle("active", dot.dataset.sectionLink === section);
@@ -253,4 +247,7 @@ window.addEventListener("mousemove", function (event) {
 setLanguage(currentLanguage);
 updateGame(currentGame);
 
-setActiveChapter(document.body.dataset.section || "home");
+
+window.addEventListener("resize", updateSharedGameHighlight);
+window.addEventListener("load", updateSharedGameHighlight);
+requestAnimationFrame(updateSharedGameHighlight);
