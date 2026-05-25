@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body data-section="home">
 	<div class="site-bg" aria-hidden="true"></div>
 	<div class="site-shade" aria-hidden="true"></div>
 
@@ -25,46 +25,51 @@
 			</a>
 
 			<nav class="nav" aria-label="Main navigation">
-				<a href="#games">Games</a>
-				<a href="#about">About</a>
-				<a href="#contact">Contact</a>
-				<a href="privacy.html">Privacy</a>
+				<a href="#games" data-i18n="nav_games">Games</a>
+				<a href="#about" data-i18n="nav_about">About</a>
+				<a href="#contact" data-i18n="nav_contact">Contact</a>
+				<a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
 			</nav>
+
+			<div class="language-switcher" aria-label="Language selector">
+				<button type="button" class="language-button active" data-lang="en">EN</button>
+				<button type="button" class="language-button" data-lang="es">ES</button>
+			</div>
 		</div>
 	</header>
 
 	<main id="top" class="page">
-		<section class="hero">
+		<section class="hero section-watch" data-bg-section="home">
 			<div class="container hero-inner">
 				<div class="hero-copy reveal">
-					<p class="eyebrow">Solo indie developer · Android games</p>
-					<h1>Building small mobile games, one release at a time.</h1>
-					<p class="lead">
+					<p class="eyebrow" data-i18n="hero_eyebrow">Solo indie developer · Android games</p>
+					<h1 data-i18n="hero_title">Building small mobile games, one release at a time.</h1>
+					<p class="lead" data-i18n="hero_lead">
 						ASerraPlay is my personal publishing name for Android games: puzzle, trivia and arcade projects made by a solo developer.
 					</p>
 
 					<div class="hero-actions">
-						<a class="button primary" href="#games">See my games</a>
-						<a class="button secondary" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer">Google Play</a>
+						<a class="button primary" href="#games" data-i18n="hero_button_games">See my games</a>
+						<a class="button secondary" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer" data-i18n="hero_button_play">Google Play</a>
 					</div>
 				</div>
 
 				<div class="developer-panel reveal delay">
-					<div class="panel-label">Developer</div>
-					<h2>Jose Vicente Vicedo Silla</h2>
-					<p>Solo developer behind ASerraPlay.</p>
+					<div class="panel-label" data-i18n="developer_label">Developer</div>
+					<h2 data-i18n="developer_name">Jose Vicente Vicedo Silla</h2>
+					<p data-i18n="developer_role">Solo developer behind ASerraPlay.</p>
 
 					<div class="panel-meta">
 						<div>
-							<span>Focus</span>
-							<strong>Mobile games</strong>
+							<span data-i18n="meta_focus_label">Focus</span>
+							<strong data-i18n="meta_focus_value">Mobile games</strong>
 						</div>
 						<div>
-							<span>Platform</span>
-							<strong>Google Play</strong>
+							<span data-i18n="meta_platform_label">Platform</span>
+							<strong data-i18n="meta_platform_value">Google Play</strong>
 						</div>
 						<div>
-							<span>Brand</span>
+							<span data-i18n="meta_brand_label">Brand</span>
 							<strong>ASerraPlay</strong>
 						</div>
 					</div>
@@ -72,12 +77,12 @@
 			</div>
 		</section>
 
-		<section id="games" class="section">
+		<section id="games" class="section section-watch" data-bg-section="games">
 			<div class="container">
 				<div class="section-heading reveal">
-					<p class="eyebrow">Games</p>
-					<h2>Published work</h2>
-					<p>
+					<p class="eyebrow" data-i18n="games_eyebrow">Games</p>
+					<h2 data-i18n="games_title">Published work</h2>
+					<p data-i18n="games_intro">
 						Choose a game to see a short description and open it directly on Google Play.
 					</p>
 				</div>
@@ -112,7 +117,7 @@
 								Rotate mirrors, redirect laser beams and solve each level by finding the correct path.
 							</p>
 
-							<a id="gameLink" class="button primary" href="https://play.google.com/store/apps/details?id=com.ASerraPlay.lasermirror" target="_blank" rel="noopener noreferrer">
+							<a id="gameLink" class="button primary" href="https://play.google.com/store/apps/details?id=com.ASerraPlay.lasermirror" target="_blank" rel="noopener noreferrer" data-i18n="game_open">
 								Open on Google Play
 							</a>
 						</div>
@@ -121,12 +126,12 @@
 			</div>
 		</section>
 
-		<section id="about" class="section about">
+		<section id="about" class="section about section-watch" data-bg-section="about">
 			<div class="container about-inner">
 				<div class="about-copy reveal">
-					<p class="eyebrow">About</p>
-					<h2>Not a studio. A solo dev publishing finished games.</h2>
-					<p>
+					<p class="eyebrow" data-i18n="about_eyebrow">About</p>
+					<h2 data-i18n="about_title">Not a studio. A solo dev publishing finished games.</h2>
+					<p data-i18n="about_p1">
 						ASerraPlay is the name I use to organize and publish my Android game projects.
 						The focus is simple: finish games, publish them, learn from each release and keep improving.
 					</p>
@@ -135,35 +140,35 @@
 				<div class="values">
 					<div class="value reveal">
 						<span>01</span>
-						<h3>Finished releases</h3>
-						<p>Small completed projects matter more than endless unfinished prototypes.</p>
+						<h3 data-i18n="value_1_title">Finished releases</h3>
+						<p data-i18n="value_1_text">Small completed projects matter more than endless unfinished prototypes.</p>
 					</div>
 					<div class="value reveal">
 						<span>02</span>
-						<h3>Clear mechanics</h3>
-						<p>Simple ideas, readable goals and quick-session gameplay.</p>
+						<h3 data-i18n="value_2_title">Clear mechanics</h3>
+						<p data-i18n="value_2_text">Simple ideas, readable goals and quick-session gameplay.</p>
 					</div>
 					<div class="value reveal">
 						<span>03</span>
-						<h3>Mobile publishing</h3>
-						<p>Built and maintained with Google Play requirements in mind.</p>
+						<h3 data-i18n="value_3_title">Mobile publishing</h3>
+						<p data-i18n="value_3_text">Built and maintained with Google Play requirements in mind.</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section id="contact" class="section contact">
+		<section id="contact" class="section contact section-watch" data-bg-section="contact">
 			<div class="container">
 				<div class="contact-box reveal">
 					<div>
-						<p class="eyebrow">Contact</p>
-						<h2>Feedback, support or collaboration?</h2>
-						<p>Contact me directly for anything related to ASerraPlay games.</p>
+						<p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+						<h2 data-i18n="contact_title">Feedback, support or collaboration?</h2>
+						<p data-i18n="contact_text">Contact me directly for anything related to ASerraPlay games.</p>
 					</div>
 
 					<div class="contact-actions">
-						<a class="button primary" href="mailto:josevicentevicedosilla@gmail.com">Email me</a>
-						<a class="button secondary" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer">Google Play page</a>
+						<a class="button primary" href="mailto:josevicentevicedosilla@gmail.com" data-i18n="contact_email">Email me</a>
+						<a class="button secondary" href="https://play.google.com/store/apps/dev?id=6847439413900177313" target="_blank" rel="noopener noreferrer" data-i18n="contact_play">Google Play page</a>
 					</div>
 				</div>
 			</div>
@@ -172,10 +177,10 @@
 
 	<footer class="footer">
 		<div class="container footer-inner">
-			<p>© 2026 ASerraPlay</p>
+			<p data-i18n="footer_text">© 2026 ASerraPlay</p>
 			<div>
-				<a href="privacy.html">Privacy Policy</a>
-				<a href="mailto:josevicentevicedosilla@gmail.com">Contact</a>
+				<a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+				<a href="mailto:josevicentevicedosilla@gmail.com" data-i18n="footer_contact">Contact</a>
 			</div>
 		</div>
 	</footer>

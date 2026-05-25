@@ -17,6 +17,15 @@
 	--blue: #8db7ff;
 	--radius: 28px;
 	--shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+
+	/* Future-ready background system */
+	--bg-image: url("assets/backgrounds/aserraplay-bg.png");
+	--bg-size: cover;
+	--bg-position: center center;
+	--bg-opacity: 0.62;
+	--shade-left: rgba(13,16,24,0.88);
+	--shade-mid: rgba(13,16,24,0.50);
+	--shade-right: rgba(13,16,24,0.82);
 }
 
 html {
@@ -30,6 +39,43 @@ body {
 	font-family: Inter, system-ui, sans-serif;
 	line-height: 1.65;
 	overflow-x: hidden;
+	transition: background-color 0.45s ease;
+}
+
+body[data-section="home"] {
+	--bg-size: cover;
+	--bg-position: center center;
+	--bg-opacity: 0.58;
+	--shade-left: rgba(13,16,24,0.90);
+	--shade-mid: rgba(13,16,24,0.50);
+	--shade-right: rgba(13,16,24,0.78);
+}
+
+body[data-section="games"] {
+	--bg-size: cover;
+	--bg-position: center top;
+	--bg-opacity: 0.50;
+	--shade-left: rgba(13,16,24,0.92);
+	--shade-mid: rgba(13,16,24,0.58);
+	--shade-right: rgba(13,16,24,0.86);
+}
+
+body[data-section="about"] {
+	--bg-size: cover;
+	--bg-position: center center;
+	--bg-opacity: 0.46;
+	--shade-left: rgba(13,16,24,0.92);
+	--shade-mid: rgba(13,16,24,0.62);
+	--shade-right: rgba(13,16,24,0.88);
+}
+
+body[data-section="contact"] {
+	--bg-size: cover;
+	--bg-position: center bottom;
+	--bg-opacity: 0.52;
+	--shade-left: rgba(13,16,24,0.90);
+	--shade-mid: rgba(13,16,24,0.55);
+	--shade-right: rgba(13,16,24,0.84);
 }
 
 a {
@@ -49,18 +95,25 @@ img {
 
 /*
 	BACKGROUND
-	Visible, but treated as ambience rather than a giant hero image.
+	Now it uses cover + section variables, so it fits the current viewport better.
+	Later you can replace --bg-image per section if you want different backgrounds.
 */
 .site-bg {
 	position: fixed;
 	inset: 0;
 	z-index: -3;
-	background:
-		url("assets/backgrounds/aserraplay-bg.png") center top 72px / min(1450px, 92vw) auto no-repeat,
-		radial-gradient(circle at 20% 10%, rgba(231, 184, 111, 0.18), transparent 30%),
-		radial-gradient(circle at 82% 18%, rgba(141, 183, 255, 0.16), transparent 30%),
-		linear-gradient(180deg, #0d1018 0%, #141925 52%, #0d1018 100%);
-	opacity: 1;
+	background-image: var(--bg-image);
+	background-repeat: no-repeat;
+	background-size: var(--bg-size);
+	background-position: var(--bg-position);
+	opacity: var(--bg-opacity);
+	transform: scale(1.02);
+	transition:
+		opacity 0.45s ease,
+		background-size 0.45s ease,
+		background-position 0.45s ease,
+		filter 0.45s ease;
+	filter: saturate(0.92) contrast(1.03);
 }
 
 .site-shade {
@@ -69,8 +122,11 @@ img {
 	z-index: -2;
 	pointer-events: none;
 	background:
-		linear-gradient(90deg, rgba(13,16,24,0.94) 0%, rgba(13,16,24,0.58) 48%, rgba(13,16,24,0.84) 100%),
-		linear-gradient(180deg, rgba(13,16,24,0.2), rgba(13,16,24,0.82) 72%, rgba(13,16,24,0.96));
+		linear-gradient(90deg, var(--shade-left) 0%, var(--shade-mid) 48%, var(--shade-right) 100%),
+		linear-gradient(180deg, rgba(13,16,24,0.18), rgba(13,16,24,0.82) 76%, rgba(13,16,24,0.96)),
+		radial-gradient(circle at 22% 12%, rgba(231,184,111,0.18), transparent 28%),
+		radial-gradient(circle at 82% 18%, rgba(141,183,255,0.16), transparent 30%);
+	transition: background 0.45s ease;
 }
 
 .header,
@@ -132,6 +188,35 @@ img {
 .nav a:hover {
 	color: var(--text);
 	transform: translateY(-2px);
+}
+
+.language-switcher {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px;
+	border-radius: 999px;
+	border: 1px solid var(--line);
+	background: rgba(255,255,255,0.045);
+}
+
+.language-button {
+	cursor: pointer;
+	border: 0;
+	border-radius: 999px;
+	padding: 7px 10px;
+	background: transparent;
+	color: var(--muted);
+	font: inherit;
+	font-weight: 900;
+	font-size: 0.78rem;
+	transition: background 0.18s ease, color 0.18s ease;
+}
+
+.language-button.active,
+.language-button:hover {
+	background: var(--text);
+	color: var(--bg);
 }
 
 .hero {
@@ -278,6 +363,7 @@ h2 {
 
 .section {
 	padding: 110px 0;
+	min-height: 72vh;
 }
 
 .section-heading {
@@ -390,10 +476,6 @@ h2 {
 	align-items: start;
 }
 
-.about-copy p + p {
-	margin-top: 14px;
-}
-
 .values {
 	display: grid;
 	gap: 14px;
@@ -476,15 +558,11 @@ h2 {
 		grid-template-columns: 1fr;
 	}
 
-	.site-bg {
-		background-size: 1200px auto, auto, auto, auto;
-		background-position: center top 110px, center, center, center;
-	}
-
 	.site-shade {
 		background:
 			linear-gradient(90deg, rgba(13,16,24,0.90) 0%, rgba(13,16,24,0.62) 50%, rgba(13,16,24,0.90) 100%),
-			linear-gradient(180deg, rgba(13,16,24,0.3), rgba(13,16,24,0.9));
+			linear-gradient(180deg, rgba(13,16,24,0.3), rgba(13,16,24,0.9)),
+			radial-gradient(circle at 22% 12%, rgba(231,184,111,0.14), transparent 28%);
 	}
 }
 
@@ -504,6 +582,10 @@ h2 {
 		order: 3;
 		justify-content: center;
 		flex-wrap: wrap;
+	}
+
+	.language-switcher {
+		margin-left: auto;
 	}
 
 	.hero {
@@ -527,9 +609,10 @@ h2 {
 		flex-direction: column;
 	}
 
-	.site-bg {
-		background-size: 980px auto, auto, auto, auto;
-		background-position: center top 92px, center, center, center;
+	body[data-section] {
+		--bg-size: cover;
+		--bg-position: center center;
+		--bg-opacity: 0.38;
 	}
 }
 
