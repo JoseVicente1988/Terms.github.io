@@ -1,41 +1,31 @@
 const cursorGlow = document.querySelector(".cursor-glow");
-const reveals = document.querySelectorAll(".reveal");
-const gameTabs = document.querySelectorAll(".game-tab");
-
-const games = {
-	laser: {
-		title: "Laser Mirror Puzzle",
-		genre: "Puzzle · Logic · Beta",
-		description: "Rotate mirrors, redirect laser beams and find the correct route to complete each level.",
-		icon: "https://play-lh.googleusercontent.com/yQySyCnis-KyZTVJMyufh77u9h9bN7KaXSWyweacwN7jy5VwGs_YK_ooF5tl-D0qNmTYKsL-tqhNGzgUgcr3vUo=s256",
-		link: "https://play.google.com/store/apps/details?id=com.ASerraPlay.lasermirror",
-		features: ["Mirror routing", "Laser puzzles", "Short levels"]
-	},
-	bible: {
-		title: "Bible Quizz",
-		genre: "Trivia · Quiz",
-		description: "A Bible-themed quiz game where players answer questions and test their knowledge.",
-		icon: "https://play-lh.googleusercontent.com/8DmC3WQOvi0omWAX_V3aAlQJLsZTV8gu2kR1A9wtyAd9uMGAxjlXt8NqHxiJWxFTuOM=s256",
-		link: "https://play.google.com/store/apps/details?id=com.ASerraPlay.BibleQuizz",
-		features: ["Trivia", "Questions", "Knowledge"]
-	},
-	run: {
-		title: "RunRunRule",
-		genre: "Arcade · Endless",
-		description: "A fast arcade game designed for short mobile sessions and direct action.",
-		icon: "https://play-lh.googleusercontent.com/ning4Homll1jps-1wHqouR8YaxKLoKPQzPh86eDR9NspYvNKkcCckux7GwgStFdjnOg=s256",
-		link: "https://play.google.com/store/apps/details?id=com.ASerraPlay.RunRunRule",
-		features: ["Arcade", "Endless", "Quick play"]
-	}
-};
+const bgImage = document.querySelector(".bg-image");
+const revealItems = document.querySelectorAll(".reveal");
+const switchButtons = document.querySelectorAll(".switch-button");
+const featureCards = document.querySelectorAll(".featured-card");
+const magneticItems = document.querySelectorAll(".magnetic");
+const magneticCards = document.querySelectorAll(".magnetic-card");
 
 window.addEventListener("mousemove", function (event) {
-	if (cursorGlow === null) {
+	if (cursorGlow) {
+		cursorGlow.style.left = event.clientX + "px";
+		cursorGlow.style.top = event.clientY + "px";
+	}
+
+	if (bgImage) {
+		const x = (event.clientX / window.innerWidth - 0.5) * 18;
+		const y = (event.clientY / window.innerHeight - 0.5) * 14;
+		bgImage.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+	}
+});
+
+window.addEventListener("scroll", function () {
+	if (!bgImage) {
 		return;
 	}
 
-	cursorGlow.style.left = event.clientX + "px";
-	cursorGlow.style.top = event.clientY + "px";
+	const y = Math.min(window.scrollY * 0.035, 70);
+	bgImage.style.backgroundPosition = "center calc(var(--bg-position-y) + " + y + "px)";
 });
 
 const observer = new IntersectionObserver(
@@ -46,44 +36,118 @@ const observer = new IntersectionObserver(
 			}
 		});
 	},
-	{
-		threshold: 0.16
-	}
+	{ threshold: 0.14 }
 );
 
-reveals.forEach(function (element) {
-	observer.observe(element);
+revealItems.forEach(function (item) {
+	observer.observe(item);
 });
 
-gameTabs.forEach(function (tab) {
-	tab.addEventListener("click", function () {
-		const key = tab.dataset.game;
-		const game = games[key];
+switchButtons.forEach(function (button) {
+	button.addEventListener("click", function () {
+		const game = button.dataset.game;
 
-		if (!game) {
-			return;
-		}
-
-		gameTabs.forEach(function (item) {
+		switchButtons.forEach(function (item) {
 			item.classList.remove("active");
 		});
 
-		tab.classList.add("active");
-
-		document.getElementById("displayTitle").textContent = game.title;
-		document.getElementById("displayGenre").textContent = game.genre;
-		document.getElementById("displayDescription").textContent = game.description;
-		document.getElementById("displayIcon").src = game.icon;
-		document.getElementById("displayIcon").alt = game.title + " icon";
-		document.getElementById("displayLink").href = game.link;
-
-		const features = document.getElementById("displayFeatures");
-		features.innerHTML = "";
-
-		game.features.forEach(function (feature) {
-			const span = document.createElement("span");
-			span.textContent = feature;
-			features.appendChild(span);
+		featureCards.forEach(function (card) {
+			card.classList.remove("active");
 		});
+
+		button.classList.add("active");
+
+		const activeCard = document.querySelector('[data-feature-card="' + game + '"]');
+		if (activeCard) {
+			activeCard.classList.add("active");
+		}
 	});
 });
+
+magneticItems.forEach(function (item) {
+	item.addEventListener("mousemove", function (event) {
+		const rect = item.getBoundingClientRect();
+		const x = event.clientX - rect.left - rect.width / 2;
+		const y = event.clientY - rect.top - rect.height / 2;
+
+		item.style.transform = "translate(" + x * 0.08 + "px, " + y * 0.12 + "px)";
+	});
+
+	item.addEventListener("mouseleave", function () {
+		item.style.transform = "";
+	});
+});
+
+magneticCards.forEach(function (card) {
+	card.addEventListener("mousemove", function (event) {
+		const rect = card.getBoundingClientRect();
+		const x = event.clientX - rect.left;
+		const y = event.clientY - rect.top;
+		const rotateY = ((x / rect.width) - 0.5) * 8;
+		const rotateX = ((y / rect.height) - 0.5) * -8;
+
+		card.style.transform = "perspective(900px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) translateY(-6px)";
+	});
+
+	card.addEventListener("mouseleave", function () {
+		card.style.transform = "";
+	});
+});
+
+const canvas = document.getElementById("particles");
+const context = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+}
+
+function createParticles() {
+	particles = [];
+	const count = Math.min(90, Math.floor(window.innerWidth / 18));
+
+	for (let index = 0; index < count; index += 1) {
+		particles.push({
+			x: Math.random() * canvas.width,
+			y: Math.random() * canvas.height,
+			vx: (Math.random() - 0.5) * 0.28,
+			vy: (Math.random() - 0.5) * 0.28,
+			radius: Math.random() * 1.8 + 0.6,
+			alpha: Math.random() * 0.45 + 0.12
+		});
+	}
+}
+
+function drawParticles() {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	particles.forEach(function (particle) {
+		particle.x += particle.vx;
+		particle.y += particle.vy;
+
+		if (particle.x < 0 || particle.x > canvas.width) {
+			particle.vx *= -1;
+		}
+
+		if (particle.y < 0 || particle.y > canvas.height) {
+			particle.vy *= -1;
+		}
+
+		context.beginPath();
+		context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+		context.fillStyle = "rgba(105, 231, 255, " + particle.alpha + ")";
+		context.fill();
+	});
+
+	requestAnimationFrame(drawParticles);
+}
+
+window.addEventListener("resize", function () {
+	resizeCanvas();
+	createParticles();
+});
+
+resizeCanvas();
+createParticles();
+drawParticles();
