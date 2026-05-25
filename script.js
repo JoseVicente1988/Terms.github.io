@@ -1,13 +1,24 @@
-const glow = document.querySelector(".cursor-glow");
-const revealElements = document.querySelectorAll(".reveal");
+const cursorLight = document.querySelector(".cursor-light");
+const reveals = document.querySelectorAll(".reveal");
+const background = document.querySelector(".site-background");
 
 window.addEventListener("mousemove", function (event) {
-	if (glow === null) {
+	if (cursorLight === null) {
 		return;
 	}
 
-	glow.style.left = event.clientX + "px";
-	glow.style.top = event.clientY + "px";
+	cursorLight.style.left = event.clientX + "px";
+	cursorLight.style.top = event.clientY + "px";
+});
+
+window.addEventListener("scroll", function () {
+	if (background === null) {
+		return;
+	}
+
+	const scrollY = window.scrollY;
+	const movement = Math.min(scrollY * 0.08, 90);
+	background.style.transform = "scale(1.04) translateY(" + movement + "px)";
 });
 
 const observer = new IntersectionObserver(
@@ -19,10 +30,10 @@ const observer = new IntersectionObserver(
 		});
 	},
 	{
-		threshold: 0.18
+		threshold: 0.16
 	}
 );
 
-revealElements.forEach(function (element) {
+reveals.forEach(function (element) {
 	observer.observe(element);
 });
