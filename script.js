@@ -1,31 +1,3 @@
-let lastSectionForTransition = document.body.dataset.section || "home";
-let chapterTransitionTimer = null;
-
-function triggerChapterTransition(nextSection) {
-	if (nextSection === lastSectionForTransition) {
-		return;
-	}
-
-	lastSectionForTransition = nextSection;
-
-	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-		return;
-	}
-
-	document.body.classList.remove("chapter-changing");
-	void document.body.offsetWidth;
-	document.body.classList.add("chapter-changing");
-
-	if (chapterTransitionTimer !== null) {
-		clearTimeout(chapterTransitionTimer);
-	}
-
-	chapterTransitionTimer = setTimeout(function () {
-		document.body.classList.remove("chapter-changing");
-	}, 460);
-}
-
-
 const translations = {
 	en: {
 		rail_word: "CREATE · PLAY · INSPIRE",
@@ -201,7 +173,6 @@ const sectionObserver = new IntersectionObserver(
 		entries.forEach(function (entry) {
 			if (entry.isIntersecting) {
 				const section = entry.target.dataset.section || "home";
-				triggerChapterTransition(section);
 				document.body.dataset.section = section;
 
 				railDots.forEach(function (dot) {
